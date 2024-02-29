@@ -1,7 +1,14 @@
 ---
 title: "DSCI 310: Historical Horse Population in Canada"
 author: "Tiffany Timbers & Jordan Bourak"
-format: html
+format: 
+    html:
+        toc: true
+        toc-depth: 2
+    pdf:
+        toc: true
+        toc-depth: 2
+bibliography: references.bib
 editor: source
 ---
 
@@ -9,7 +16,7 @@ editor: source
 library(tidyverse)
 ```
 
-Aim
+## Aim
 
 This project explores the historical population of horses in Canada 
 between 1906 and 1972 for each province.
@@ -20,20 +27,20 @@ Horse population data were sourced from the
 [Government of Canada's Open Data website](http://open.canada.ca/en/open-data) 
 (Government of Canada, 2017a and Government of Canada, 2017b).
 
-Methods
+## Methods
 
-The R programming language (R Core Team, 2019) 
+The R programming language [@R] 
 and the following R packages were used to perform the analysis: 
 knitr (Xie 2014), tidyverse (Wickham 2017), and Quarto (Allaire et al 2022). 
-*Note: this report is adapted from Timbers (2020).*
+*Note: this report is adapted from @ttimbers-horses.*
 
 Results
 
-![](../results/horse_pops_plot.png)
+![Horse populations for all provinces in Canada from 1906 - 1972.](../results/horse_pops_plot.png){#fig-horse_pops_plot.png}
 
-Figure 1: Horse populations for all provinces in Canada from 1906 - 1972.
 
-We can see from Figure 1 that Ontario, Saskatchewan and Alberta 
+
+We can see from @fig-horse_pops_plot.png that Ontario, Saskatchewan and Alberta 
 have had the highest horse populations in Canada. 
 All provinces have had a decline in horse populations since 1940. 
 This is likely due to the rebound of the Canadian automotive industry 
@@ -49,6 +56,9 @@ We present the standard deviations in Table 1.
 Table 1. Standard deviation of historical (1906-1972) horse populations for each Canadian province.
 
 ```{r}
+#| label: tbl-horses_sd
+#| tbl-cap: Standard deviation of historical horse populations for each province
+
 horses_sd_table <- read_csv("../results/horses_sd.csv")
 largest_sd <- horses_sd_table$Province[1]
 knitr::kable(horses_sd_table)
@@ -64,6 +74,6 @@ Additionally, note that in Table 1 we consider the sample standard deviation of 
 
 Figure 2: Horse populations for the province with the largest standard deviation
 
-In Figure 2 we zoom in and look at the province of ???, which had the largest spread of values in terms of standard deviation.
+In Figure 2 we zoom in and look at the province of '{r} largest_sd', which had the largest spread of values in terms of standard deviation.
 
-References
+## References
